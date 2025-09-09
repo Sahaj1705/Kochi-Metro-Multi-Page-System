@@ -1,0 +1,24 @@
+{
+  "name": "metro-rail-management-system",
+  "version": "1.0.0",
+  "description": "A comprehensive metro rail management system for operations, monitoring, and administration",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve -s . -l 3000",
+    "build": "mkdir -p dist && cp -r * dist/ && echo 'Build completed successfully'",
+    "start": "npx serve -s . -l 3000",
+    "preview": "npx serve -s dist -l 4173"
+  },
+  "keywords": [
+    "metro",
+    "rail",
+    "management",
+    "transportation",
+    "operations"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

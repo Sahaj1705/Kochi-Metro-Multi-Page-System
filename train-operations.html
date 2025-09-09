@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Operations - Kochi Metro Rail Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="theme-color" content="#2563eb">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <i class="fas fa-subway"></i>
+                <span class="logo-text">Kochi Metro</span>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="header-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                
+                <div class="nav-dropdown">
+                    <button class="nav-item dropdown-toggle active" aria-expanded="false">
+                        <i class="fas fa-cogs"></i>
+                        <span>Operations</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </button>
+                    <div class="nav-dropdown-content">
+                        <a href="train-operations.html" class="nav-dropdown-item active">
+                            <i class="fas fa-train"></i>
+                            <span>Train Operations</span>
+                        </a>
+                        <a href="verify-operations.html" class="nav-dropdown-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verify Operations</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="staff-management.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Staff</span>
+                </a>
+                
+                <a href="schedule-management.html" class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Schedule</span>
+                </a>
+                
+                <a href="live-map.html" class="nav-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Live Map</span>
+                </a>
+                
+                <a href="reports.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+            </nav>
+
+            <!-- Header Right Controls -->
+            <div class="header-right">
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun theme-icon" id="theme-icon"></i>
+                </button>
+
+                <!-- Notifications -->
+                <div class="notification-container">
+                    <button class="notification-btn" id="notification-btn" aria-expanded="false">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="notification-dropdown" id="notification-dropdown">
+                        <div class="notification-header">
+                            <h3>Notifications</h3>
+                            <span class="notification-count">3 new</span>
+                        </div>
+                        <div class="notification-list">
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">Train Delay Alert</div>
+                                    <div class="notification-text">Train K101 delayed by 5 minutes</div>
+                                    <div class="notification-time">2 minutes ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fas fa-info-circle" style="color: #3b82f6;"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">System Update</div>
+                                    <div class="notification-text">Scheduled maintenance at 2:00 AM</div>
+                                    <div class="notification-time">1 hour ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fas fa-check-circle" style="color: #10b981;"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">Verification Complete</div>
+                                    <div class="notification-text">All morning operations verified</div>
+                                    <div class="notification-time">3 hours ago</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-footer">
+                            <button class="view-all-notifications">View All Notifications</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile -->
+                <div class="profile-container">
+                    <button class="profile-btn" id="profile-btn" aria-expanded="false">
+                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=64&h=64&fit=crop&crop=face" alt="Profile" class="profile-avatar">
+                        <span class="profile-name">Admin User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="profile-dropdown" id="profile-dropdown">
+                        <div class="profile-info">
+                            <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop&crop=face" alt="Profile" class="profile-avatar-large">
+                            <div class="profile-details">
+                                <h4>Admin User</h4>
+                                <p>System Administrator</p>
+                            </div>
+                        </div>
+                        <div class="profile-menu">
+                            <button class="profile-menu-item" id="profile-settings">
+                                <i class="fas fa-user-cog"></i>
+                                <span>Profile Settings</span>
+                            </button>
+                            <button class="profile-menu-item" id="change-password">
+                                <i class="fas fa-key"></i>
+                                <span>Change Password</span>
+                            </button>
+                            <button class="profile-menu-item" id="preferences">
+                                <i class="fas fa-cog"></i>
+                                <span>Preferences</span>
+                            </button>
+                            <div class="profile-menu-divider"></div>
+                            <button class="profile-menu-item logout" id="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-item">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="train-operations.html" class="mobile-nav-item active">
+                <i class="fas fa-train"></i>
+                <span>Train Operations</span>
+            </a>
+            <a href="verify-operations.html" class="mobile-nav-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Verify Operations</span>
+            </a>
+            <a href="staff-management.html" class="mobile-nav-item">
+                <i class="fas fa-users"></i>
+                <span>Staff Management</span>
+            </a>
+            <a href="schedule-management.html" class="mobile-nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Schedule Management</span>
+            </a>
+            <a href="live-map.html" class="mobile-nav-item">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Live Map</span>
+            </a>
+            <a href="reports.html" class="mobile-nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span>
+            </a>
+            <div class="mobile-nav-divider"></div>
+            <button class="mobile-nav-item" id="mobile-profile-settings">
+                <i class="fas fa-user-cog"></i>
+                <span>Profile Settings</span>
+            </button>
+            <button class="mobile-nav-item logout" id="mobile-logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h1>Train Operations</h1>
+                    <p>Monitor and manage all train operations in real-time</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-primary" id="add-train-btn">
+                        <i class="fas fa-plus"></i>
+                        Add Train
+                    </button>
+                    <button class="btn btn-secondary" id="emergency-btn">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Emergency
+                    </button>
+                </div>
+            </div>
+
+            <!-- Operations Controls -->
+            <div class="operations-controls">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Trains</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="delayed">Delayed</button>
+                    <button class="filter-btn" data-filter="maintenance">Maintenance</button>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search-input" id="train-search" placeholder="Search trains...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+
+            <!-- Train Operations List -->
+            <div class="train-operations-list">
+                <div class="train-item" data-status="active">
+                    <div class="train-info">
+                        <div class="train-id">K101</div>
+                        <div class="train-details">
+                            <h3>Aluva - Tripunithura</h3>
+                            <p>Driver: Rajesh Kumar | Next: Edappally</p>
+                        </div>
+                    </div>
+                    <div class="train-status">
+                        <span class="status-badge active">Active</span>
+                        <div class="train-time">Last updated: 2 min ago</div>
+                    </div>
+                    <div class="train-actions">
+                        <button class="btn btn-sm btn-primary">Track</button>
+                        <button class="btn btn-sm btn-secondary">Contact</button>
+                    </div>
+                </div>
+
+                <div class="train-item" data-status="delayed">
+                    <div class="train-info">
+                        <div class="train-id">K102</div>
+                        <div class="train-details">
+                            <h3>Tripunithura - Aluva</h3>
+                            <p>Driver: Priya Nair | Next: Kakkanad</p>
+                        </div>
+                    </div>
+                    <div class="train-status">
+                        <span class="status-badge delayed">Delayed</span>
+                        <div class="train-time">Delay: 5 minutes</div>
+                    </div>
+                    <div class="train-actions">
+                        <button class="btn btn-sm btn-primary">Track</button>
+                        <button class="btn btn-sm btn-warning">Alert</button>
+                    </div>
+                </div>
+
+                <div class="train-item" data-status="active">
+                    <div class="train-info">
+                        <div class="train-id">K103</div>
+                        <div class="train-details">
+                            <h3>Aluva - Tripunithura</h3>
+                            <p>Driver: Suresh Babu | Next: Ernakulam South</p>
+                        </div>
+                    </div>
+                    <div class="train-status">
+                        <span class="status-badge active">Active</span>
+                        <div class="train-time">On schedule</div>
+                    </div>
+                    <div class="train-actions">
+                        <button class="btn btn-sm btn-primary">Track</button>
+                        <button class="btn btn-sm btn-secondary">Contact</button>
+                    </div>
+                </div>
+
+                <div class="train-item" data-status="maintenance">
+                    <div class="train-info">
+                        <div class="train-id">K104</div>
+                        <div class="train-details">
+                            <h3>Maintenance Mode</h3>
+                            <p>Technician: Arun Krishnan | Location: Depot</p>
+                        </div>
+                    </div>
+                    <div class="train-status">
+                        <span class="status-badge maintenance">Maintenance</span>
+                        <div class="train-time">ETA: 2 hours</div>
+                    </div>
+                    <div class="train-actions">
+                        <button class="btn btn-sm btn-secondary">View Details</button>
+                        <button class="btn btn-sm btn-primary">Contact Tech</button>
+                    </div>
+                </div>
+
+                <div class="train-item" data-status="active">
+                    <div class="train-info">
+                        <div class="train-id">K105</div>
+                        <div class="train-details">
+                            <h3>Tripunithura - Aluva</h3>
+                            <p>Driver: Meera Thomas | Next: JLN Stadium</p>
+                        </div>
+                    </div>
+                    <div class="train-status">
+                        <span class="status-badge active">Active</span>
+                        <div class="train-time">On schedule</div>
+                    </div>
+                    <div class="train-actions">
+                        <button class="btn btn-sm btn-primary">Track</button>
+                        <button class="btn btn-sm btn-secondary">Contact</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Train Modal -->
+    <div class="modal" id="add-train-modal" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Train</h2>
+                <button class="modal-close" id="add-train-modal-close" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="add-train-form">
+                    <div class="form-group">
+                        <label for="train-id">Train ID</label>
+                        <input type="text" id="train-id" name="train-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="train-driver">Driver Name</label>
+                        <input type="text" id="train-driver" name="train-driver" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="train-route">Route</label>
+                        <select id="train-route" name="train-route" required>
+                            <option value="">Select Route</option>
+                            <option value="aluva-tripunithura">Aluva - Tripunithura</option>
+                            <option value="tripunithura-aluva">Tripunithura - Aluva</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-add-train">Cancel</button>
+                <button class="btn btn-primary" id="submit-train">Add Train</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="multipage-script.js"></script>
+</body>
+</html>
